@@ -1,0 +1,14 @@
+{{/* Show most recent posts on home page, else show all posts */}}
+{{ $pages := cond (.IsHome) .Site.Params.PostsPreviewCount (len (where .Site.Pages "Section" "posts")) }}
+<ul class="posts-list">
+  {{ with .GetPage "/posts" }}
+    {{- range first $pages .Pages -}}
+      <li class="post-single">
+        <a class="post-title" href="{{ .Permalink }}">{{ .Title }}</a>
+        <span class="post-date" title="{{ .Date }}">
+          {{ partial "svg.html" "calendar" }} {{ partial "short-date-time.html" .Params.Date }}
+        </span>
+      </li>
+    {{- end -}}
+  {{ end }}
+</ul>

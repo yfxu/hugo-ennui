@@ -1,0 +1,17 @@
+
+:root {
+  --color-background: #ffffff;
+  --color-text-primary: #3b393d;
+  --color-text-secondary: #a6a9ad;
+  --color-accent: #45b694;
+  --max-width: 600px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #2B2A33;
+    --color-text-primary: #ede3dd;
+    --color-text-secondary: #747a7a;
+    --color-accent: #03CEA4;
+  }
+}

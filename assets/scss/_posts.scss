@@ -1,0 +1,34 @@
+@use "variables";
+
+ul.posts-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+li.post-single {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0.5rem 0;
+
+  svg {
+    fill: var(--color-text-secondary);
+    margin-right: 0.25em;
+  }
+
+  a.post-title {
+    width: fit-content;
+  }
+}
+
+span.post-date {
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+}
+
+p.post-time {
+  color: var(--color-text-secondary);
+
+  svg {
+    fill: var(--color-text-secondary);
+  }
+}

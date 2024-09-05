@@ -1,0 +1,255 @@
+@use "posts";
+@use "hugo";
+@use "variables";
+
+$mobile-width: 450px;
+
+@mixin text-primary {
+  color: var(--color-text-primary);
+}
+
+@mixin text-secondary {
+  color: var(--color-text-secondary);
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  @include text-primary();
+  background-color: var(--color-background);
+  font-family: Arial, sans-serif;
+  color-scheme: light;
+}
+
+body {
+  @include flex-column();
+  margin: 0;
+  min-height: 100vh;
+}
+
+div.name-header {
+  text-transform: lowercase;
+  margin: 1rem auto;
+  text-align: center;
+
+  h1 { margin: 0 }
+  h4 { 
+    margin: 0;
+    @include text-secondary();
+  }
+}
+
+div.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2px;
+
+  &::after {
+    content: '';
+    flex-grow: 999999999;
+  }
+
+  > a {
+    display: block;
+    margin: 2px;
+    position: relative;
+    min-height: 200px;
+    flex-grow: 1;
+    background-color: var(--color-background);
+    
+    img {
+      max-width: 100%;
+      min-width: 100%;
+      min-height: 200px;
+      object-fit: cover;
+      vertical-align: bottom;
+    }
+  }
+}
+
+nav.main-nav {
+  @include flex-row();
+  justify-content: space-evenly;
+  padding-bottom: 1rem;
+  column-gap: 1rem;
+  width: 100%
+}
+
+footer {
+  @include flex-row();
+  column-gap: 1rem;
+  margin-bottom: 1rem;
+
+  a {
+    font-weight: bold;
+  }
+}
+
+blockquote {
+  border-left: 4px solid var(--color-accent);
+  margin-left: 0;
+  padding-left: 2rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  
+  &:hover {
+    color: var(--color-text-secondary);
+  }
+}
+
+
+article {
+  line-height: 1.5em;
+
+  h1, h2, h3 {
+    line-height: 1.5em;
+  }
+  
+  img {
+    width: 100%;
+  }
+}
+
+hr {
+  border-top: 1px solid var(--color-text-secondary);
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  width: 100%;
+  margin: 0 0 1rem 0;
+}
+
+svg {
+  height: 1em;
+  fill: var(--color-text-primary);
+}
+
+a.gallery-tag:before {
+  content: "#"
+}
+
+div.image-info, div.post-info {  
+  p.image-location {
+    @include text-secondary();
+    margin: 0;
+
+    svg {
+      fill: var(--color-text-secondary);
+      margin-right: 0.25em;
+    }
+  }
+
+  p.image-time, p.post-time {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: bold;
+
+    svg {
+      margin-right: 0.25em;
+    }
+  }
+}
+
+div.tags-list {
+  column-count: auto;
+  column-width: 15em;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.contain {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.text-monospace {
+  font-family: monospace;
+}
+
+div.home-container {
+  @include flex-column();
+  row-gap: 2rem;
+  width: 100%;
+  margin: auto;
+  text-transform: lowercase;
+  
+  div.home-feature {
+    margin: auto;
+    width: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+
+    @media screen and (max-width: $mobile-width) {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+    }
+
+    div.home-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+
+      row-gap: 0.25rem;
+      padding: 0.5rem 1rem;
+      border: 0.25rem solid var(--color-text-primary);
+      
+      h1 {
+        margin: 0;
+        line-height: 2rem;
+      }
+
+      h4 {
+        color: var(--color-text-secondary);
+        margin: 0;
+        line-height: 1rem
+      }
+    }
+
+    div.home-socials {
+      @include flex-column();
+      justify-content: space-between;
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--color-text-secondary);
+
+      div.home-social-link {
+        @include flex-row();
+        column-gap: 2rem;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  div.home-nav {
+    margin: auto;
+    font-weight: bold;
+    nav {
+      @include flex-row();
+      column-gap: 1rem;
+    }
+  }
+}
